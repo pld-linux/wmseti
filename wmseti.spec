@@ -21,8 +21,8 @@ wmseti is a WindowMaker dockapp which monitors your SETI@home client
 statistics.
 
 %description -l pl
-wmseti jest dokowalnym apletem dla WindowMakera, który monitoruje
-statystyki twojego klienta SETI@home.
+wmseti jest dokowalnym apletem dla WindowMakera, który monitoruje statystyki
+twojego klienta SETI@home.
 
 %prep
 %setup -q
@@ -48,4 +48,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc {README,ChangeLog,TODO,BUGS,AUTHORS,NEWS}.gz
 %attr(755,root,root) %{_bindir}/wmseti
-%config %{_datadir}/wmsetirc
+%config %{_sysconfdir}/wmsetirc
