@@ -1,0 +1,25 @@
+--- rc-stuff.c~	Wed Sep  1 16:10:47 1999
++++ rc-stuff.c	Thu Sep  2 18:46:08 1999
+@@ -211,7 +211,7 @@
+ char *find_rc_file(char *file)
+ {
+ 	/* rc can be found in two default locations:
+-	 * /etc/wmsetirc or ~/.wmsetirc. */
++	 * /usr/X11R6/share/wmsetirc or ~/.wmsetirc. */
+ 	char buf[128];
+ 	FILE *fp;
+ 
+@@ -220,11 +220,11 @@
+ 	strcat(buf, "/.wmsetirc");
+ 	if ((fp = fopen(buf, "r")) == NULL)
+ 	{
+-		strcpy(buf, "/etc/wmsetirc");
++		strcpy(buf, "/usr/X11R6/share/wmsetirc");
+ 		if ((fp = fopen(buf, "r")) == NULL)
+ 		{
+ 			if (Verbose) 
+-				fprintf(stderr, "configuration file not found ($HOME/.wmsetirc or /etc/wmsetirc)\n");
++				fprintf(stderr, "configuration file not found ($HOME/.wmsetirc or /usr/X11R6/share/wmsetirc)\n");
+ 			return NULL;
+ 		}
+ 		else
