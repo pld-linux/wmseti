@@ -42,13 +42,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf README ChangeLog TODO BUGS AUTHORS NEWS
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc README ChangeLog TODO BUGS AUTHORS NEWS
 %attr(755,root,root) %{_bindir}/wmseti
 %config %{_sysconfdir}/wmsetirc
