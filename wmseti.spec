@@ -2,14 +2,14 @@ Summary:	SETI@home client statistics monitor for WindowMaker
 Summary(pl):	Monitor statystyk klienta SETI@home dla WindowMakera
 Name:		wmseti
 Version:	0.3.0
-Release:	2
+Release:	3
 Group:		X11/Window Managers/Tools
 Group(de):	X11/Fenstermanager/Werkzeuge
 Group(pl):	X11/Zarz±dcy Okien/Narzêdzia
 License:	GPL
-Source0:	http://catv6054.extern.kun.nl/~paul/wmseti/%{name}-%{version}.tar.gz
+Source0:	http://prdownloads.sourceforge.net/wmseti/%{name}-%{version}.tar.gz
 Patch0:		%{name}-rcpath.patch
-URL:		http://catv6054.extern.kun.nl/~paul/wmseti/
+URL:		http://wmseti.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -51,6 +51,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {README,ChangeLog,TODO,BUGS,AUTHORS,NEWS}.gz
+%doc *.gz
 %attr(755,root,root) %{_bindir}/wmseti
 %config %{_sysconfdir}/wmsetirc
