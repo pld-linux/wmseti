@@ -4,8 +4,6 @@ Name:		wmseti
 Version:	0.3.6
 Release:	1
 Group:		X11/Window Managers/Tools
-Group(de):	X11/Fenstermanager/Werkzeuge
-Group(pl):	X11/Zarz±dcy Okien/Narzêdzia
 License:	GPL
 Source0:	http://prdownloads.sourceforge.net/wmseti/%{name}-%{version}.tar.gz
 Patch0:		%{name}-rcpath.patch
