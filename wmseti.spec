@@ -1,7 +1,7 @@
 Summary:	SETI@home client statistics monitor for WindowMaker
 Summary(pl):	Monitor statystyk klienta SETI@home dla WindowMakera
 Name:		wmseti
-Version:	0.2.0
+Version:	0.2.6
 Release:	1
 Group:		X11/Window Managers/Tools
 Group(pl):	X11/Zarz±dcy Okien/Narzêdzia
@@ -14,6 +14,7 @@ BuildRequires:	xpm-devel
 BuildRoot:   	/tmp/%{name}-%{version}-root
 
 %define		_prefix		/usr/X11R6
+%define		_sysconfdir	%{_datadir}
 
 %description
 wmseti is a WindowMaker dockapp which monitors your SETI@home client
@@ -28,23 +29,23 @@ statystyki twojego klienta SETI@home.
 %patch -p0
 
 %build
+LDFLAGS="-s"; export LDFLAGS
+%configure
 
-make CFLAGS="$RPM_OPT_FLAGS -I/usr/X11R6/include"
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}}
 
-install -s wmseti $RPM_BUILD_ROOT%{_bindir}
-install wmsetirc  $RPM_BUILD_ROOT%{_datadir}
+make install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf README Changelog TODO BUGS AUTHORS
+gzip -9nf README ChangeLog TODO BUGS AUTHORS NEWS
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {README,Changelog,TODO,BUGS,AUTHORS}.gz
+%doc {README,ChangeLog,TODO,BUGS,AUTHORS,NEWS}.gz
 %attr(755,root,root) %{_bindir}/wmseti
 %config %{_datadir}/wmsetirc
