@@ -10,7 +10,6 @@ Source:		http://catv6054.extern.kun.nl/~paul/wmseti/%{name}-%{version}.tar.gz
 Patch:		wmseti-rcpath.patch
 URL:		http://catv6054.extern.kun.nl/~paul/wmseti/
 BuildRequires:	XFree86-devel
-BuildRequires:	xpm-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
