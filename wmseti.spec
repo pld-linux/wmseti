@@ -28,7 +28,6 @@ statystyki twojego klienta SETI@home.
 %patch -p0
 
 %build
-LDFLAGS="-s"; export LDFLAGS
 %configure
 
 %{__make}
