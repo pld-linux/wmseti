@@ -6,6 +6,7 @@ Release:	1
 Group:		X11/Window Managers/Tools
 License:	GPL
 Source0:	http://dl.sourceforge.net/wmseti/%{name}-%{version}.tar.gz
+# Source0-md5:	0e3b9a79d7e2e6199949e4412c530435
 Patch0:		%{name}-rcpath.patch
 URL:		http://wmseti.sourceforge.net/
 BuildRequires:	XFree86-devel
