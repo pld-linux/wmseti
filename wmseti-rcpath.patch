@@ -1,16 +1,41 @@
---- rc-stuff.c~	Thu Nov  4 23:54:47 1999
-+++ rc-stuff.c	Tue Nov  9 13:13:29 1999
-@@ -258,11 +258,11 @@
- 	strcat(buf, "/.wmsetirc");
- 	if ((fp = fopen(buf, "r")) == NULL)
+--- ./wmsetirc-file.c.org	Tue May  1 04:31:18 2001
++++ ./wmsetirc-file.c	Mon Nov 26 01:25:27 2001
+@@ -113,7 +113,7 @@
+ /* find_wmsetirc() looks on several default locations to find a wmsetirc file.
+  * If found, it will (if necessary) expand this location to an absolute path,
+  * put the result in *file and return a pointer to file. wmsetirc can be found
+- * in /etc/wmsetirc (old location), /usr/local/etc/wmsetirc (sample wmsetirc)
++ * in /etc/wmsetirc (old location), /etc/X11/Apps/wmsetirc (sample wmsetirc)
+  * or $HOME/.wmsetirc. */
+ /***********************************************************************************/
+ char *find_wmsetirc(char *file)
+@@ -121,7 +121,7 @@
+ 	char buffer[128];
+ 	FILE *fp;
+ 
+-	/* First try $HOME/.wmsetirc, then /usr/local/etc/wmsetirc and finally
++	/* First try $HOME/.wmsetirc, then /etc/X11/Apps/wmsetirc and finally
+ 	 * as backup /etc/wmsetirc. */
+ 	if ( (strcpy(buffer, (char *)getenv("HOME"))) == NULL )
  	{
--		strcpy(buf, "/usr/local/etc/wmsetirc");
-+		strcpy(buf, "/etc/X11/Apps/wmsetirc");
- 		if ((fp = fopen(buf, "r")) == NULL)
+@@ -132,9 +132,9 @@
+ 	if ( (fp = fopen(buffer, "r")) == NULL )
+ 	{
+ 		/* No $HOME/.wmsetirc. */
+-		if ( (strcpy(buffer, "/usr/local/etc/wmsetirc")) == NULL )
++		if ( (strcpy(buffer, "/etc/X11/Apps/wmsetirc")) == NULL )
  		{
- 			if (Verbose) 
--				fprintf(stderr, "configuration file not found ($HOME/.wmsetirc or /etc/wmsetirc)\n");
-+				fprintf(stderr, "configuration file not found ($HOME/.wmsetirc or /etc/X11/Apps/wmsetirc)\n");
+-			perror("copying /usr/local/etc/wmsetirc to buffer in find_wmsetirc()");
++			perror("copying /etc/X11/Apps/wmsetirc to buffer in find_wmsetirc()");
  			return NULL;
  		}
- 		else
+ 		if ( (fp = fopen(buffer, "r")) == NULL )
+@@ -149,7 +149,7 @@
+ 			{
+ 				/* Ok. No configuration file found. Notify and die. */
+ 				if ( DebugLevel >= 2 )
+-					fprintf(stderr, "\t\tNo configuration file found in $HOME/.wmsetirc, /usr/local/etc/wmsetirc or /etc/wmsetirc.\n");
++					fprintf(stderr, "\t\tNo configuration file found in $HOME/.wmsetirc, /etc/X11/Apps/wmsetirc or /etc/wmsetirc.\n");
+ 				return NULL;
+ 			}
+ 			else
