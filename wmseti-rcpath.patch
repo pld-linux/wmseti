@@ -1,41 +1,32 @@
---- ./wmsetirc-file.c.org	Tue May  1 04:31:18 2001
-+++ ./wmsetirc-file.c	Mon Nov 26 01:25:27 2001
-@@ -113,7 +113,7 @@
- /* find_wmsetirc() looks on several default locations to find a wmsetirc file.
-  * If found, it will (if necessary) expand this location to an absolute path,
-  * put the result in *file and return a pointer to file. wmsetirc can be found
-- * in /etc/wmsetirc (old location), /usr/local/etc/wmsetirc (sample wmsetirc)
-+ * in /etc/wmsetirc (old location), /etc/X11/Apps/wmsetirc (sample wmsetirc)
-  * or $HOME/.wmsetirc. */
- /***********************************************************************************/
- char *find_wmsetirc(char *file)
-@@ -121,7 +121,7 @@
- 	char buffer[128];
- 	FILE *fp;
+diff -urN wmseti-1.0.3/README wmseti-1.0.3.rc.patch/README
+--- wmseti-1.0.3/README	Sun Mar  3 16:12:38 2002
++++ wmseti-1.0.3.rc.patch/README	Sun Dec 28 21:18:31 2003
+@@ -43,10 +43,10 @@
+ be used to go up and down the directories in either display.
  
--	/* First try $HOME/.wmsetirc, then /usr/local/etc/wmsetirc and finally
-+	/* First try $HOME/.wmsetirc, then /etc/X11/Apps/wmsetirc and finally
- 	 * as backup /etc/wmsetirc. */
- 	if ( (strcpy(buffer, (char *)getenv("HOME"))) == NULL )
- 	{
-@@ -132,9 +132,9 @@
- 	if ( (fp = fopen(buffer, "r")) == NULL )
- 	{
- 		/* No $HOME/.wmsetirc. */
--		if ( (strcpy(buffer, "/usr/local/etc/wmsetirc")) == NULL )
-+		if ( (strcpy(buffer, "/etc/X11/Apps/wmsetirc")) == NULL )
- 		{
--			perror("copying /usr/local/etc/wmsetirc to buffer in find_wmsetirc()");
-+			perror("copying /etc/X11/Apps/wmsetirc to buffer in find_wmsetirc()");
- 			return NULL;
- 		}
- 		if ( (fp = fopen(buffer, "r")) == NULL )
-@@ -149,7 +149,7 @@
- 			{
- 				/* Ok. No configuration file found. Notify and die. */
- 				if ( DebugLevel >= 2 )
--					fprintf(stderr, "\t\tNo configuration file found in $HOME/.wmsetirc, /usr/local/etc/wmsetirc or /etc/wmsetirc.\n");
-+					fprintf(stderr, "\t\tNo configuration file found in $HOME/.wmsetirc, /etc/X11/Apps/wmsetirc or /etc/wmsetirc.\n");
- 				return NULL;
- 			}
- 			else
+ The configuration file as been slightly changed from the original
+-version. See "wmsetirc" for an example, or copy it to "~/.wmsetirc"
+-and change it to your needs. The default display settings are what
+-I use. The configuration covers seti@home directories, program
+-command line, statistics display, refresh and update rates.
++version. See "/etc/wmsetirc" and change it to your needs. The default
++display settings are what I use. The configuration covers seti@home
++directories, program command line, statistics display, refresh and
++update rates.
+ 
+ The timeleft statistic now shows whether an upload or download
+ to the SETI@home server is required.
+diff -urN wmseti-1.0.3/src/wmseti.c wmseti-1.0.3.rc.patch/src/wmseti.c
+--- wmseti-1.0.3/src/wmseti.c	Sat Dec 21 01:13:40 2002
++++ wmseti-1.0.3.rc.patch/src/wmseti.c	Sun Dec 28 21:16:12 2003
+@@ -368,8 +368,8 @@
+ 	}
+ 	optind = 0;
+ 
+-	strcpy( buf,  "~/.wmsetirc" );
+-	expand_dir( buf );
++	strcpy( buf,  "/etc/wmsetirc" );
++/*	expand_dir( buf );	*/
+ 
+ 	if ( fp = fopen( buf, "r" ) ) {
+ 		while ( fgets( buf, sizeof(buf), fp ) ) {
