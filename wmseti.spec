@@ -5,7 +5,7 @@ Version:	0.3.6
 Release:	1
 Group:		X11/Window Managers/Tools
 License:	GPL
-Source0:	http://prdownloads.sourceforge.net/wmseti/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/wmseti/%{name}-%{version}.tar.gz
 Patch0:		%{name}-rcpath.patch
 URL:		http://wmseti.sourceforge.net/
 BuildRequires:	XFree86-devel
@@ -22,7 +22,7 @@ statistics.
 
 %description -l pl
 wmseti jest dokowalnym apletem dla WindowMakera, który monitoruje
-statystyki twojego klienta SETI@home.
+statystyki klienta SETI@home.
 
 %prep
 %setup -q
@@ -42,7 +42,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -50,4 +49,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README ChangeLog TODO BUGS AUTHORS NEWS
 %attr(755,root,root) %{_bindir}/wmseti
-%config %{_sysconfdir}/wmsetirc
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/wmsetirc
