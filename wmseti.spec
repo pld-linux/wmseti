@@ -2,7 +2,7 @@ Summary:	SETI@home client statistics monitor for WindowMaker
 Summary(pl):	Monitor statystyk klienta SETI@home dla WindowMakera
 Name:		wmseti
 Version:	0.3.0
-Release:	1
+Release:	2
 Group:		X11/Window Managers/Tools
 Group(pl):	X11/Zarz±dcy Okien/Narzêdzia
 License:	GPL
@@ -28,6 +28,10 @@ statystyki twojego klienta SETI@home.
 %patch -p0
 
 %build
+rm -f missing
+aclocal
+autoconf
+automake -a -c
 %configure
 
 %{__make}
