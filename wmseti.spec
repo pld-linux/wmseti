@@ -11,7 +11,7 @@ Patch:		wmseti-rcpath.patch
 URL:		http://catv6054.extern.kun.nl/~paul/wmseti/
 BuildRequires:	XFree86-devel
 BuildRequires:	xpm-devel
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 %define		_sysconfdir	/etc/X11/Apps
