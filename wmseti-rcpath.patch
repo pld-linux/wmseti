@@ -5,12 +5,12 @@
  	if ((fp = fopen(buf, "r")) == NULL)
  	{
 -		strcpy(buf, "/usr/local/etc/wmsetirc");
-+		strcpy(buf, "/usr/X11R6/share/wmsetirc");
++		strcpy(buf, "/etc/X11/Apps/wmsetirc");
  		if ((fp = fopen(buf, "r")) == NULL)
  		{
  			if (Verbose) 
 -				fprintf(stderr, "configuration file not found ($HOME/.wmsetirc or /etc/wmsetirc)\n");
-+				fprintf(stderr, "configuration file not found ($HOME/.wmsetirc or /usr/X11R6/share/wmsetirc)\n");
++				fprintf(stderr, "configuration file not found ($HOME/.wmsetirc or /etc/X11/Apps/wmsetirc)\n");
  			return NULL;
  		}
  		else
