@@ -4,12 +4,15 @@ Name:		wmseti
 Version:	0.3.0
 Release:	2
 Group:		X11/Window Managers/Tools
+Group(de):	X11/Fenstermanager/Werkzeuge
 Group(pl):	X11/Zarz±dcy Okien/Narzêdzia
 License:	GPL
-Source:		http://catv6054.extern.kun.nl/~paul/wmseti/%{name}-%{version}.tar.gz
-Patch:		wmseti-rcpath.patch
+Source0:	http://catv6054.extern.kun.nl/~paul/wmseti/%{name}-%{version}.tar.gz
+Patch0:		%{name}-rcpath.patch
 URL:		http://catv6054.extern.kun.nl/~paul/wmseti/
 BuildRequires:	XFree86-devel
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
