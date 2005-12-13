@@ -34,7 +34,8 @@ statystyki klienta SETI@home.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sysconfdir}
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 install wmsetirc $RPM_BUILD_ROOT%{_sysconfdir}
 
@@ -45,4 +46,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/wmseti
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/wmsetirc
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/wmsetirc
