@@ -1,5 +1,5 @@
 Summary:	SETI@home client statistics monitor for WindowMaker
-Summary(pl):	Monitor statystyk klienta SETI@home dla WindowMakera
+Summary(pl.UTF-8):   Monitor statystyk klienta SETI@home dla WindowMakera
 Name:		wmseti
 Version:	1.0.3
 Release:	1
@@ -17,8 +17,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 wmseti is a WindowMaker dockapp which monitors your SETI@home client
 statistics.
 
-%description -l pl
-wmseti jest dokowalnym apletem dla WindowMakera, który monitoruje
+%description -l pl.UTF-8
+wmseti jest dokowalnym apletem dla WindowMakera, ktÃ³ry monitoruje
 statystyki klienta SETI@home.
 
 %prep
