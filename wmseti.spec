@@ -1,5 +1,5 @@
 Summary:	SETI@home client statistics monitor for WindowMaker
-Summary(pl.UTF-8):   Monitor statystyk klienta SETI@home dla WindowMakera
+Summary(pl.UTF-8):	Monitor statystyk klienta SETI@home dla WindowMakera
 Name:		wmseti
 Version:	1.0.3
 Release:	1
